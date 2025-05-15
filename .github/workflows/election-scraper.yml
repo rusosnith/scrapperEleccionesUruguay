@@ -1,4 +1,4 @@
-name: Scrape Elecciones Lavalleja
+name: Scrape Elecciones Lavalleja - Python
 
 on:
   schedule:
@@ -14,17 +14,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '18'
+        python-version: '3.11'
         
     - name: Install dependencies
       run: |
-        npm install puppeteer csv-writer
+        pip install requests beautifulsoup4 selenium webdriver-manager pandas
         
     - name: Run scraper
-      run: node scraper.js
+      run: python scraper.py
         
     - name: Commit and push results
       run: |
