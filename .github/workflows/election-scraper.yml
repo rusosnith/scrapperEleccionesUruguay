@@ -1,35 +1,35 @@
-# name: Scrape Elecciones Lavalleja - Python
+name: Scrape Elecciones Lavalleja - Python
 
-# on:
-#   schedule:
-#     # Ejecutar cada 5 minutos durante el día de las elecciones
-#     - cron: '*/5 6-23 * * *'
-#   workflow_dispatch:
+on:
+   # schedule:
+    # Ejecutar cada 5 minutos durante el día de las elecciones
+    # - cron: '*/5 6-23 * * *'
+  workflow_dispatch:
 
-# jobs:
-#   scrape:
-#     runs-on: ubuntu-latest
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
     
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v4
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
       
-#     - name: Set up Python
-#       uses: actions/setup-python@v4
-#       with:
-#         python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
         
-#     - name: Install dependencies
-#       run: |
-#         pip install requests beautifulsoup4 selenium webdriver-manager pandas
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4 selenium webdriver-manager pandas
         
-#     - name: Run scraper
-#       run: python scraper.py
+    - name: Run scraper
+      run: python scraper.py
         
-#     - name: Commit and push results
-#       run: |
-#         git config --local user.email "action@github.com"
-#         git config --local user.name "GitHub Action"
-#         git add elecciones_lavalleja.csv
-#         git commit -m "Update data - $(date)" || exit 0
-#         git push
+    - name: Commit and push results
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add elecciones_lavalleja.csv
+        git commit -m "Update data - $(date)" || exit 0
+        git push
